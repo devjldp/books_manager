@@ -10,6 +10,8 @@ from bson.objectid import ObjectId
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
+
 # Check if the "env.py" file exists and, if so, import its environment variables
 if os.path.exists("env.py"):
     import env
@@ -17,9 +19,18 @@ if os.path.exists("env.py"):
 # Create an instance of the Flask application
 app = Flask(__name__)
 
+# Configuration of the MongoDB database and the secret key for the session
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
+
+# Routes
 @app.route('/')
 def test():
-  return("HI world")
+  books = mongo.db.books.find()
+  return(books)
 
 
 
