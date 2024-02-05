@@ -1,17 +1,31 @@
 body{
   background-color: lightblue;
+  margin: 0 auto;
+}
+/* spacing / colors / fonts / margins  */
+.text-center{
+  text-align: center;
 }
 
 
 /* vanigation bar  */
+#main-header{
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: white;
+}
 nav{
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
 #logo{
-  flex:0.3
+  flex:0.3;
+  cursor: pointer;
 }
 
 #nav-bar{
@@ -23,5 +37,67 @@ nav{
 }
 #nav-bar a{
   text-decoration: none;
-  text-shadow: 2px 2px 2px 2px red;
+  text-shadow: 1px 1px 1px white;
+}
+
+/* footer  */
+#main-footer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#footer-brand{
+  flex: 0.3
+}
+
+#social-links{
+  flex: 0.6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+}
+
+#social-linl a{
+  text-decoration: none;
+}
+
+.social-link{
+  color: #000000;
+}
+
+.social-link i{
+  font-size: 1.5em;
+}
+
+/* index.html */
+
+#img-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main-image{
+  width:80%;
+  margin:0 auto;
+}
+
+#btns-index{
+  margin-top: 2%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.btn-index{
+  text-decoration: none;
+  border: 2px solid #000000;
+  padding: 5px 10px;
+  border-radius: 20px;
 }

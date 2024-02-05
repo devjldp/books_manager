@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/7eb6fd173c.js" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.css') }}"
@@ -11,12 +12,12 @@
     <title>Bookish Blaze</title>
   </head>
 
-  <header>
+  <header id="main-header">
     <!-- screen nav bar  -->
     <nav>
-      <a id="logo">Bookis Blaze</a>
+      <a a href="{{ url_for('index') }}" id="logo">Bookish Blaze</a>
       <ul id="nav-bar">
-        <li><a href="">Home</a></li>
+        <li><a href="{{ url_for('index') }}"">Home</a></li>
         <li><a href="">Profile</a></li>
         <li><a href="">New Book</a></li>
         <li><a href="">New Review</a></li>
@@ -39,5 +40,26 @@
   </header>
   <body>
     {% block content %} {% endblock %}
+
+  <footer id="main-footer">
+    <p id="footer-brand" class="text-center">2024, Bookish Blaze</p>
+    <ul id="social-links">
+      <li>
+          <a href="https://www.facebook.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="facebook">
+              <i class="fa-brands fa-square-facebook"></i>
+          </a>
+      </li>
+      <li>
+          <a href="https://twitter.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="twitter" >
+              <i class="fa-brands fa-twitter"></i>
+          </a>
+      </li>
+      <li>
+          <a href="https://www.instagram.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="instagram">
+              <i class="fa-brands fa-instagram"></i>
+          </a>
+      </li>
+  </ul>
+  </footer>
   </body>
 </html>
