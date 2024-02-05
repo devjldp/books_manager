@@ -1,26 +1,8 @@
 {% extends "books_template.html" %} {% block content %}
-<h1 class="text-center">New User</h1>
-<form action="{{ url_for('register')}}" method="post" id="register-form">
+<h1 class="text-center">Sign In</h1>
+<form action="{{ url_for('login')}}" method="post" id="login-form">
   <table>
     <tbody>
-      <!-- name field  -->
-      <tr>
-        <td>
-          <label for="name">Name:</label>
-        </td>
-        <td>
-          <input type="text" name="name" id="name" required />
-        </td>
-      </tr>
-      <!-- email field  -->
-      <tr>
-        <td>
-          <label for="email">Email: </label>
-        </td>
-        <td>
-          <input type="email" name="email" id="email" required />
-        </td>
-      </tr>
       <!-- user field  -->
       <tr>
         <td>
@@ -58,18 +40,16 @@
       <!-- submit button  -->
       <tr>
         <td colspan="2">
-          <input type="submit" value="Register" />
+          <input type="submit" value="Sign IN" />
         </td>
       </tr>
     </tbody>
   </table>
 </form>
 <div>
-  <p id="message-validation"></p>
   <p class="text-center">
-    Already registered? <a href="{{url_for('login')}}">Sign In Here!</a>
+    Are you a new reader?
+    <a href="{{ url_for('register') }}"> Register Here!</a>
   </p>
 </div>
-{% endblock %} {% block scripts %}
-<script src="{{url_for('static', filename='js/validation.js') }}"></script>
 {% endblock %}
