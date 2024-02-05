@@ -1,3 +1,7 @@
 {% extends "books_template.html" %} {% block content %}
 <h1>Book manager</h1>
+<div>
+  <a href="{{ url_for('add_book') }}">Add a new Book</a>
+  <a href="{{ url_for('get_books')}}">Edit / Delete a Book</a>
+</div>
 {% endblock %}
