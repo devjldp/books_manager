@@ -132,6 +132,39 @@ def logout():
     return redirect(url_for('index'))
 
 
+# Add a new book
+@app.route("/add_book.html", methods = ["GET", "POST"])
+def add_book():
+    if request.method == "POST":
+        # Check if the book already exists in the database
+        existing_book = mongo.db.books.find_one(
+            {"title": request.form.get("title").lower()})
+
+        if existing_book:
+            # If the book already exists, display an error message and redirect to the add book page
+            flash("This book already exists in the database")
+            return redirect(url_for("add_book"))
+    
+        # Add the new book in the database
+        book = {
+            "title": request.form.get("title").lower(),
+            "author": request.form.get("author").lower(),
+            "year_published": int(request.form.get("year_published")),
+            "genre": request.form.get("genre").lower(),
+            "isbn":  request.form.get("isbn"),
+            "publisher": request.form.get("publisher"),
+            "language": request.form.get("language").lower(),
+            "description": request.form.get("description")
+        }
+        
+        # insert the new book in my db
+        mongo.db.books.insert_one(book)
+        # display a message 
+        flash("Book Added successful!")
+    
+    return render_template("add_book.html")
+
+
 @app.route('/books')
 def getBooks():
     books = mongo.db.books.find()
