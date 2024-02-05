@@ -199,6 +199,15 @@ def edit_book(book_id):
     # Render the HTML template to edit the task with the obtained data
     return render_template("edit_book.html", book=book)
 
+# Define the route to delete a task with its ID
+@app.route("/delete_task/<book_id>")
+def delete_book(book_id):
+    # Delete the task from the database using its ID
+    mongo.db.books.delete_one({"_id": ObjectId(book_id)})
+    # Display a success message using flash
+    flash("Book Successfully Deleted")
+    # Redirect to the page that shows all tasks
+    return redirect(url_for("get_books"))
 
 
 # If this file is executed as the main script
