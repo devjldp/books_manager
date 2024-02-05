@@ -1,3 +1,27 @@
 body{
   background-color: lightblue;
 }
+
+
+/* vanigation bar  */
+nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#logo{
+  flex:0.3
+}
+
+#nav-bar{
+  flex: 0.5;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#nav-bar a{
+  text-decoration: none;
+  text-shadow: 2px 2px 2px 2px red;
+}
