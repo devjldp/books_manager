@@ -1,0 +1,51 @@
+{% extends "books_template.html" %} {% block content %}
+<h1 class="text-center">New User</h1>
+<form action="" method="post">
+  <table>
+    <tbody>
+      <!-- name field  -->
+      <tr>
+        <td>
+          <label for="name">Name:</label>
+        </td>
+        <td>
+          <input type="text" name="name" id="name" />
+        </td>
+      </tr>
+      <!-- email field  -->
+      <tr>
+        <td>
+          <label for="email">Email: </label>
+        </td>
+        <td>
+          <input type="email" name="email" id="email" />
+        </td>
+      </tr>
+      <!-- user field  -->
+      <tr>
+        <td>
+          <label for="user">User: </label>
+        </td>
+        <td>
+          <input type="text" name="user" id="user" />
+        </td>
+      </tr>
+      <!-- password field -->
+      <tr>
+        <td>
+          <label for="password">Password:</label>
+        </td>
+        <td>
+          <input type="password" name="password" id="password" />
+        </td>
+      </tr>
+      <!-- submit button  -->
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Register" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+{% endblock %}
