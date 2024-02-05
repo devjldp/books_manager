@@ -64,7 +64,7 @@ def register():
     
     return render_template("register.html")
 
-#Sign In
+# Sign In
 @app.route('/signin', methods = ["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -79,7 +79,7 @@ def login():
                     # If the password is correct, log in and redirect to the profile
                     session["user"] = request.form.get("username").lower()
                     flash(f"Welcome, {request.form.get('username')}")
-                
+                    return redirect(url_for("profile", username=session["user"]))
                 else:
                     session["user"] = request.form.get("username").lower()
                     flash(f"Manager: {request.form.get('username')}")   
@@ -93,6 +93,21 @@ def login():
             return redirect(url_for("login"))
     
     return render_template("login.html")
+
+# view for users
+@app.route("/profile/<username>")
+def profile(username):
+    # Get the username from the current session
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    # Check if there is an active user session
+    if session["user"]:
+        # Render the "profile.html" template and pass the username as an argument
+        return render_template("profile.html", username=username)
+    # If there is no active session, redirect to the login
+    return redirect(url_for("login"))
+
+
 
 
 @app.route('/books')
