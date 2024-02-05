@@ -160,7 +160,7 @@ def add_book():
         # insert the new book in my db
         mongo.db.books.insert_one(book)
         # display a message 
-        flash("Book Added successful!")
+        flash("Book Successfully Added!")
     
     return render_template("add_book.html")
 
@@ -171,6 +171,33 @@ def get_books():
     return render_template("books.html", books=books)
 
 
+# Define the route "/edit_task/<task_id>" to edit an existing task
+@app.route("/edit_book/<book_id>", methods=["GET", "POST"])
+def edit_book(book_id):
+    if request.method == "POST":
+    # Create a dictionary with the upddated book information
+        updatedBook = {
+            "title": request.form.get("title").lower(),
+            "author": request.form.get("author").lower(),
+            "year_published": int(request.form.get("year_published")),
+            "genre": request.form.get("genre").lower(),
+            "isbn":  request.form.get("isbn"),
+            "publisher": request.form.get("publisher"),
+            "language": request.form.get("language").lower(),
+            "description": request.form.get("description")
+        }
+        # Update the task in the database using its ID
+        mongo.db.books.update_one({"_id": ObjectId(book_id)}, {"$set": updatedBook})
+        
+        # Display a success message using flash
+        flash("Book Successfully Updated!")
+        return redirect(url_for("get_books"))
+
+    # Get the book from the database to display it in the user interface
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+    # Render the HTML template to edit the task with the obtained data
+    return render_template("edit_book.html", book=book)
 
 
 
