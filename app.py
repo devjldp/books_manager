@@ -107,7 +107,14 @@ def profile(username):
     # If there is no active session, redirect to the login
     return redirect(url_for("login"))
 
-
+# Define log out
+@app.route("/logout")
+def logout():
+    # Display a farewell message and clear the user session
+    flash("You have been logged out")
+    session.pop("user")
+    # Redirect to the login page
+    return redirect(url_for('index'))
 
 
 @app.route('/books')
