@@ -82,7 +82,8 @@ def login():
                     return redirect(url_for("profile", username=session["user"]))
                 else:
                     session["user"] = request.form.get("username").lower()
-                    flash(f"Manager: {request.form.get('username')}")   
+                    flash(f"Manager: {request.form.get('username')}") 
+                    return redirect(url_for("admin", username=session["user"]))  
             else:
                 # If the password is incorrect, display an error message and redirect to the login
                 flash("Incorrect Username and/or Password")
@@ -104,6 +105,20 @@ def profile(username):
     if session["user"]:
         # Render the "profile.html" template and pass the username as an argument
         return render_template("profile.html", username=username)
+    # If there is no active session, redirect to the login
+    return redirect(url_for("login"))
+
+
+# view for administrator
+@app.route("/admin/<username>")
+def admin(username):
+    # Get the username from the current session
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    # Check if there is an active user session
+    if session["user"]:
+        # Render the "profile.html" template and pass the username as an argument
+        return render_template("admin.html", username=username)
     # If there is no active session, redirect to the login
     return redirect(url_for("login"))
 
