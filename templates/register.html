@@ -1,6 +1,6 @@
 {% extends "books_template.html" %} {% block content %}
 <h1 class="text-center">New User</h1>
-<form action="" method="post">
+<form action="{{ url_for('register')}}" method="post" id="register-form">
   <table>
     <tbody>
       <!-- name field  -->
@@ -9,7 +9,7 @@
           <label for="name">Name:</label>
         </td>
         <td>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" required />
         </td>
       </tr>
       <!-- email field  -->
@@ -18,16 +18,24 @@
           <label for="email">Email: </label>
         </td>
         <td>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" required />
         </td>
       </tr>
       <!-- user field  -->
       <tr>
         <td>
-          <label for="user">User: </label>
+          <label for="username">User: </label>
         </td>
         <td>
-          <input type="text" name="user" id="user" />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            minlength="5"
+            maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$"
+            required
+          />
         </td>
       </tr>
       <!-- password field -->
@@ -36,7 +44,15 @@
           <label for="password">Password:</label>
         </td>
         <td>
-          <input type="password" name="password" id="password" />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            minlength="5"
+            maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$"
+            required
+          />
         </td>
       </tr>
       <!-- submit button  -->
@@ -48,4 +64,9 @@
     </tbody>
   </table>
 </form>
+<div>
+  <p id="message-validation"></p>
+</div>
+{% endblock %} {% block scripts %}
+<script src="{{url_for('static', filename='js/validation.js') }}"></script>
 {% endblock %}

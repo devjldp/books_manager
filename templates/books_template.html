@@ -15,34 +15,44 @@
     <title>Bookish Blaze</title>
   </head>
 
-  <header id="main-header">
-    <!-- screen nav bar  -->
-    <nav>
-      <a a href="{{ url_for('index') }}" id="logo">Bookish Blaze</a>
-      <ul id="nav-bar">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
+  <body>
+    <header id="main-header">
+      <!-- screen nav bar  -->
+      <nav>
+        <a a href="{{ url_for('index') }}" id="logo">Bookish Blaze</a>
+        <ul id="nav-bar">
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="">Profile</a></li>
+          <li><a href="">New Book</a></li>
+          <li><a href="">New Review</a></li>
+          <li><a href="">Log Out</a></li>
+          <li><a href="">Sign In</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+        </ul>
+      </nav>
+
+      <!-- mobile nav bar  -->
+      <!-- <ul>
+        <li><a href="">Home</a></li>
         <li><a href="">Profile</a></li>
         <li><a href="">New Book</a></li>
         <li><a href="">New Review</a></li>
         <li><a href="">Log Out</a></li>
         <li><a href="">Sign In</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-      </ul>
-    </nav>
+        <li><a href="">Register</a></li>
+      </ul> -->
+    </header>
 
-    <!-- mobile nav bar  -->
-    <!-- <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="">Profile</a></li>
-      <li><a href="">New Book</a></li>
-      <li><a href="">New Review</a></li>
-      <li><a href="">Log Out</a></li>
-      <li><a href="">Sign In</a></li>
-      <li><a href="">Register</a></li>
-    </ul> -->
-  </header>
-  <body>
-    {% block content %} {% endblock %}
+    <main>
+      <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <h4 class="text-center">{{message}}</h4>
+        {% endfor %} {% endif %} {% endwith %}
+      </section>
+      {% block content %} {% endblock %}
+    </main>
 
     <footer id="main-footer">
       <p id="footer-brand" class="text-center">2024, Bookish Blaze</p>
@@ -82,5 +92,7 @@
         </li>
       </ul>
     </footer>
+
+    {% block scripts %} {% endblock %}
   </body>
 </html>
