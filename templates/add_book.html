@@ -1,0 +1,72 @@
+{% extends "books_template.html" %} {% block content %}
+<h1 class="text-center">Add a new Book</h1>
+<form action="{{url_for('add_book')}}" method="POST">
+  <table>
+    <tbody>
+      <!-- title field  -->
+      <tr>
+        <td><label for="title">Book title</label></td>
+        <td><input type="text" name="title" id="title" /></td>
+      </tr>
+      <!-- author field  -->
+      <tr>
+        <td><label for="author">Author</label></td>
+        <td><input type="text" name="author" id="author" /></td>
+      </tr>
+      <!-- year published field  -->
+      <tr>
+        <td><label for="year_published">Year published</label></td>
+        <td>
+          <input
+            type="number"
+            name="year_published"
+            id="year_published"
+            minlength="4"
+            maxlength="4"
+          />
+        </td>
+      </tr>
+      <!-- genre field  -->
+      <tr>
+        <td><label for="genre">Genre</label></td>
+        <td><input type="text" name="genre" id="genre" /></td>
+      </tr>
+      <!-- isbn field  -->
+      <tr>
+        <td><label for="isbn">ISBN</label></td>
+        <td><input type="text" name="isbn" id="isbn" /></td>
+      </tr>
+      <!-- publisher field  -->
+      <tr>
+        <td><label for="publisher">Publisher</label></td>
+        <td><input type="text" name="publisher" id="publisher" /></td>
+      </tr>
+      <!-- language field  -->
+      <tr>
+        <td><label for="language">Language</label></td>
+        <td><input type="text" name="language" id="language" /></td>
+      </tr>
+      <!-- description field  -->
+      <tr>
+        <td colspan="2"><label for="description">Description</label></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Add new book" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+{% endblock %}
