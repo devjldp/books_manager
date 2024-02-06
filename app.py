@@ -132,6 +132,7 @@ def logout():
     return redirect(url_for('index'))
 
 
+# routes for admin 
 # Add a new book
 @app.route("/add_book.html", methods = ["GET", "POST"])
 def add_book():
@@ -163,7 +164,6 @@ def add_book():
         flash("Book Successfully Added!")
     
     return render_template("add_book.html")
-
 
 @app.route('/books')
 def get_books():
@@ -200,7 +200,7 @@ def edit_book(book_id):
     return render_template("edit_book.html", book=book)
 
 # Define the route to delete a task with its ID
-@app.route("/delete_task/<book_id>")
+@app.route("/delete_book/<book_id>")
 def delete_book(book_id):
     # Delete the task from the database using its ID
     mongo.db.books.delete_one({"_id": ObjectId(book_id)})
@@ -209,6 +209,34 @@ def delete_book(book_id):
     # Redirect to the page that shows all tasks
     return redirect(url_for("get_books"))
 
+# routes for users
+
+@app.route('/books/<username>')
+def get_user_books(username):
+    books = mongo.db.books.find()
+    return render_template("books_user.html", books=books)
+
+
+@app.route('/view_book/<book_id>',  methods=["GET", "POST"])
+def view_book(book_id):
+    if request.method == "POST":
+    # Create a dictionary with the upddated book information
+        review = {
+            "book": request.form.get("book").lower(),
+            "user": session["user"],
+            "review": request.form.get("review")
+        }
+        
+                # insert the new review in my db
+        mongo.db.reviews.insert_one(review)
+        # display a message 
+        flash("Review Successfully Added!")
+    
+    
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    
+    reviews = mongo.db.reviews.find({"book": book['title'].lower()})
+    return render_template("view_book.html", book=book, reviews = reviews)
 
 # If this file is executed as the main script
 if __name__ == "__main__":
@@ -219,3 +247,5 @@ if __name__ == "__main__":
         # Enable debug mode --> For the project, it should be set to False
         debug=True 
     )
+
+

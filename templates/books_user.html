@@ -1,0 +1,4 @@
+{% extends "books_template.html" %} {% block content %} {% for book in books %} {{ book.title}}
+<a href="{{url_for('view_book', book_id = book._id) }}">View Book</a>
+
+<br />{% endfor %} {% endblock %}

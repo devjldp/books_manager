@@ -15,18 +15,20 @@
         <a a href="{{ url_for('index') }}" id="logo">Bookish Blaze</a>
         <ul id="nav-bar">
           <li><a href="{{ url_for('index') }}">Home</a></li>
+          <!-- links for users -->
           {% if session.user and session.user!='admin' %}
           <li>
             <a href="{{ url_for('profile', username = session['user']) }}">Profile</a>
           </li>
-          <li><a href="">New Review</a></li>
+          <li><a href="{{ url_for('get_user_books', username = username) }}">New Review</a></li>
           <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          <!-- links for admin  -->
           {% elif session.user == 'admin' %}
           <li>
             <a href="{{ url_for('admin', username = session['user']) }}">Management</a>
           </li>
           <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-          <li><a href="">Edit Book</a></li>
+          <li><a href="{{ url_for('get_books')}}">Edit Book</a></li>
           <li><a href="{{ url_for('logout') }}">Log Out</a></li>
           {% else %}
           <li><a href="{{ url_for('login') }}">Sign In</a></li>
