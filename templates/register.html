@@ -1,7 +1,7 @@
 {% extends "books_template.html" %} {% block content %}
 <h1 class="text-center">New User</h1>
 <form action="{{ url_for('register')}}" method="POST" id="register-form">
-  <table>
+  <table class="forms">
     <tbody>
       <!-- name field  -->
       <tr>
@@ -27,15 +27,7 @@
           <label for="username">User: </label>
         </td>
         <td>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            minlength="5"
-            maxlength="15"
-            pattern="^[a-zA-Z0-9]{5,15}$"
-            required
-          />
+          <input type="text" name="username" id="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
         </td>
       </tr>
       <!-- password field -->
@@ -44,21 +36,13 @@
           <label for="password">Password:</label>
         </td>
         <td>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            minlength="5"
-            maxlength="15"
-            pattern="^[a-zA-Z0-9]{5,15}$"
-            required
-          />
+          <input type="password" name="password" id="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
         </td>
       </tr>
       <!-- submit button  -->
       <tr>
-        <td colspan="2">
-          <input type="submit" value="Register" />
+        <td colspan="2" class="text-center">
+          <input type="submit" value="Register" class="btn-submit" />
         </td>
       </tr>
     </tbody>
@@ -66,9 +50,7 @@
 </form>
 <div>
   <p id="message-validation"></p>
-  <p class="text-center">
-    Already registered? <a href="{{url_for('login')}}">Sign In Here!</a>
-  </p>
+  <p class="text-center">Already registered? <a href="{{url_for('login')}}">Sign In Here!</a></p>
 </div>
 {% endblock %} {% block scripts %}
 <script src="{{url_for('static', filename='js/validation.js') }}"></script>

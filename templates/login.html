@@ -1,7 +1,7 @@
 {% extends "books_template.html" %} {% block content %}
 <h1 class="text-center">Sign In</h1>
 <form action="{{ url_for('login')}}" method="POST" id="login-form">
-  <table>
+  <table class="forms">
     <tbody>
       <!-- user field  -->
       <tr>
@@ -9,15 +9,7 @@
           <label for="username">User: </label>
         </td>
         <td>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            minlength="5"
-            maxlength="15"
-            pattern="^[a-zA-Z0-9]{5,15}$"
-            required
-          />
+          <input type="text" name="username" id="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
         </td>
       </tr>
       <!-- password field -->
@@ -26,21 +18,13 @@
           <label for="password">Password:</label>
         </td>
         <td>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            minlength="5"
-            maxlength="15"
-            pattern="^[a-zA-Z0-9]{5,15}$"
-            required
-          />
+          <input type="password" name="password" id="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required />
         </td>
       </tr>
       <!-- submit button  -->
       <tr>
-        <td colspan="2">
-          <input type="submit" value="Sign IN" />
+        <td colspan="2" class="text-center">
+          <input type="submit" value="Sign IN" class="btn-submit" />
         </td>
       </tr>
     </tbody>
