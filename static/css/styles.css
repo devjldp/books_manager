@@ -1,10 +1,25 @@
+/* import font families */
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+
+
 body{
-  background-color: lightblue;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   margin: 0 auto;
 }
+
+main {
+  flex: 1 0 auto;
+}
+
 /* spacing / colors / fonts / margins  */
 .text-center{
   text-align: center;
+}
+
+.text-riot{
+  font-family: 'Protest Riot', sans-serif;
 }
 
 
@@ -14,7 +29,7 @@ body{
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: white;
+  background-color: #856a50;
 }
 nav{
   width: 100%;
@@ -26,6 +41,9 @@ nav{
 #logo{
   flex:0.3;
   cursor: pointer;
+  font-size: 1.8em;
+  text-decoration: none;
+  color:#fafafa
 }
 
 #nav-bar{
@@ -37,7 +55,12 @@ nav{
 }
 #nav-bar a{
   text-decoration: none;
-  text-shadow: 1px 1px 1px white;
+  color: #fafafa;
+  font-size: 1.2em;
+}
+#nav-bar a:hover{
+  text-decoration: none;
+  color: #a5d6a4;
 }
 
 /* footer  */
@@ -48,6 +71,8 @@ nav{
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  background-color: #856a50;
+  color: #fafafa;
 }
 
 #footer-brand{
@@ -72,7 +97,11 @@ nav{
 }
 
 .social-link i{
-  font-size: 1.5em;
+  font-size: 1.8em;
+  color: #fafafa;
+}
+.social-link i:hover{
+  color:#a5d6a4
 }
 
 /* index.html */
@@ -94,10 +123,18 @@ nav{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 2vh;
 }
 .btn-index{
+  background-color: #856a50;
+  color: #fafafa;
   text-decoration: none;
   border: 2px solid #000000;
   padding: 5px 10px;
   border-radius: 20px;
+}
+
+.btn-index:hover{
+  background-color: #fafafa;
+  color: #856a50
 }
