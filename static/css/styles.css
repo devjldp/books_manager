@@ -207,7 +207,7 @@ nav{
   color: #422e49
 }
 
-#btn-admin{
+#btn-admin, #btn-edit{
   background-color: #422e49;
   color: #fafafa;
   text-decoration: none;
@@ -216,7 +216,69 @@ nav{
   border-radius: 20px;
 }
 
-#btn-admin:hover{
+#btn-edit:hover, #btn-admin:hover{
   background-color: #fafafa;
   color: #422e49
+}
+
+#btn-delete{
+  background-color: #ee1010;
+  color: #fafafa;
+  text-decoration: none;
+  border: 2px solid #fafafafa;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+#btn-delete:hover{
+  background-color: #fafafa;
+  color: #ee1010;
+  border-color: #ee1010;
+}
+
+.btns-edit{
+  margin-top: 2%;
+}
+
+
+
+
+/* pagination  */
+
+.pagination-page-info {
+  padding: .6em;
+  padding-left: 0;
+  width: 40em;
+  margin: .5em;
+  margin-left: 0;
+  font-size: 12px;
+}
+.pagination-page-info b {
+  color: black;
+  background: #6aa6ed;
+  padding-left: 2px;
+  padding: .1em .25em;
+  font-size: 150%;
+}
+
+.pagination{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+.pagination li {
+    color: #007BFF;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #007BFF;
+    margin: 0 5px;
+}
+
+.pagination .current {
+    color: #fff;
+    background-color: #007BFF;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #007BFF;
+    margin: 0 5px;
 }

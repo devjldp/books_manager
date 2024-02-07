@@ -5,6 +5,11 @@ from flask import (Flask, flash, render_template,
                   redirect, request, session, url_for)
 # Import PyMongo to interact with MongoDB from Flask
 from flask_pymongo import PyMongo
+# pagination 
+from flask_paginate import Pagination, get_page_parameter
+from flask import Blueprint
+
+mod = Blueprint('books', __name__)
 
 from bson.objectid import ObjectId
 
@@ -167,8 +172,19 @@ def add_book():
 
 @app.route('/books')
 def get_books():
-    books = mongo.db.books.find()
-    return render_template("books.html", books=books)
+    search = False    
+    # Number of books per page
+    books_per_page = 10
+    # Get the current page number from the URL query
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # Calculate the start index for pagination
+    start_index = (page - 1) * books_per_page
+    # MongoDB query with limit and skip for pagination
+    books = list(mongo.db.books.find().skip(start_index).limit(books_per_page))
+
+    total = mongo.db.books.count_documents({})  # Total number of books in the collection
+    pagination = Pagination(page=page, total=total, search=search, record_name='books', per_page=books_per_page)
+    return render_template("books.html", books=books, pagination=pagination)
 
 
 # Define the route "/edit_task/<task_id>" to edit an existing task
