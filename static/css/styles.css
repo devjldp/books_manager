@@ -27,6 +27,9 @@ main {
   font-family: 'Protest Riot', sans-serif;
 }
 
+textarea{
+  resize: none;
+}
 
 /* Forms  */
 
@@ -153,7 +156,7 @@ nav{
 }
 
 #btns-index{
-  margin-top: 2%;
+  margin-top: 2vh;
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -175,8 +178,31 @@ nav{
 }
 
 
-/* register.html */
+/* admin.html */
 
-#register-form{
-  justify-items: center;
+.btn-admin{
+  border: 1px solid #000000
+}
+
+#btns-admin{
+  margin-top: 20%;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2vh;
+}
+
+.btn-admin{
+  background-color: #422e49;
+  color: #fafafa;
+  text-decoration: none;
+  border: 2px solid #000000;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.btn-admin:hover{
+  background-color: #fafafa;
+  color: #422e49
 }
