@@ -1,7 +1,7 @@
 {% extends "books_template.html" %} {% block content %}
 <h1 class="text-center">Add a new Book</h1>
 <form action="{{url_for('add_book')}}" method="POST">
-  <table>
+  <table class="forms">
     <tbody>
       <!-- title field  -->
       <tr>
@@ -17,13 +17,7 @@
       <tr>
         <td><label for="year_published">Year published</label></td>
         <td>
-          <input
-            type="number"
-            name="year_published"
-            id="year_published"
-            minlength="4"
-            maxlength="4"
-          />
+          <input type="number" name="year_published" id="year_published" minlength="4" maxlength="4" />
         </td>
       </tr>
       <!-- genre field  -->
@@ -52,18 +46,12 @@
       </tr>
       <tr>
         <td colspan="2">
-          <textarea
-            name="description"
-            id="description"
-            cols="30"
-            rows="10"
-            required
-          ></textarea>
+          <textarea name="description" id="description" cols="50" rows="10" required></textarea>
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-          <input type="submit" value="Add new book" />
+        <td colspan="2" class="text-center">
+          <input type="submit" value="Add new book" id="btn-admin" />
         </td>
       </tr>
     </tbody>
