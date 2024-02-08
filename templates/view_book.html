@@ -1,18 +1,29 @@
 {% extends "books_template.html" %} {% block content %}
-<p>Title: {{ book.title}}</p>
-<p>Author: {{book.author}}</p>
-<p>Year Published: {{book.year_published}}</p>
-<p>Genre: {{book.genre}}</p>
-<p>ISBN: {{book.isbn}}</p>
-<p>Publisher: {{book.publisher}}</p>
-<p>Language: {{book.language}}</p>
-<p>Description: {{book.description}}</p>
-{% for review in reviews %} {{review.user}}: {{review.review}} <br />
+<h1 class="text-center">Book : {{book.title}}</h1>
+<div class="text-center">
+  <p><strong>Reader:</strong> {{session['user']}}</p>
+
+  <p><strong>Author:</strong> {{book.author}}</p>
+  <p><strong>Year Published:</strong> {{book.year_published}}</p>
+  <p><strong>Genre:</strong> {{book.genre}}</p>
+  <p><strong>ISBN:</strong> {{book.isbn}}</p>
+  <p><strong>Publisher:</strong> {{book.publisher}}</p>
+  <p><strong>Language:</strong> {{book.language}}</p>
+  <p><strong>Description:</strong> {{book.description}}</p>
+</div>
+{% for review in reviews %}
+<div class="review-container">
+  <p>{{review.user}}</p>
+  <p>{{review.review}}</p>
+</div>
 {% endfor %}
-<form action="{{url_for('view_book', book_id = book._id) }}" method="POST">
-  <input type="text" name="book" id="book" readonly value="{{book.title}}" />
-  <textarea name="review" id="review" cols="30" rows="10"></textarea>
-  <input type="submit" value="Add review" />
+
+<form action="{{url_for('view_book', book_id = book._id) }}" method="POST" class="forms">
+  <div class="text-center" id="form-review">
+    <input type="text" name="book" id="book" readonly value="{{book.title}}" />
+    <textarea name="review" id="review" cols="60" rows="10" required></textarea>
+    <input type="submit" value="Add review" />
+  </div>
 </form>
 
-{{session['user']}} {% endblock %}
+{% endblock %}

@@ -282,3 +282,24 @@ nav{
     border: 1px solid #007BFF;
     margin: 0 5px;
 }
+
+/* review page  */
+.review-container{
+  width: 75%;
+  margin: auto;
+  background-color: #aac8ee;
+  border: 1px solid #000000;
+  padding: 1% 2%;
+}
+
+#form-review #book{
+  border: none;
+}
+
+#form-review{
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
