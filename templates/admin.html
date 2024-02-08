@@ -1,7 +1,7 @@
 {% extends "books_template.html" %} {% block content %}
 <h1 class="text-center">Book manager</h1>
 <div id="btns-admin">
-  <a href="{{ url_for('add_book') }}" class="btn-admin">Add a new Book</a>
-  <a href="{{ url_for('get_books')}}" class="btn-admin">Edit / Delete a Book</a>
+  <a href="{{ url_for('add_book') }}" class="btn-admin" aria-label="Go to add a book page to add a new book">Add a new Book</a>
+  <a href="{{ url_for('get_books')}}" class="btn-admin" aria-label="Go to book list book for editing o deleting">Edit / Delete a Book</a>
 </div>
 {% endblock %}

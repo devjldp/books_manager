@@ -50,7 +50,7 @@
 </form>
 <div>
   <p id="message-validation"></p>
-  <p class="text-center">Already registered? <a href="{{url_for('login')}}">Sign In Here!</a></p>
+  <p class="text-center">Already registered? <a href="{{url_for('login')}}" aria-label="Sig in">Sign In Here!</a></p>
 </div>
 {% endblock %} {% block scripts %}
 <script src="{{url_for('static', filename='js/validation.js') }}"></script>

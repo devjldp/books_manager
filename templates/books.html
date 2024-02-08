@@ -3,8 +3,8 @@
 <div class="text-center">
   <p>{{ book.title}}</p>
   <div class="btns-edit">
-    <a href="{{url_for('edit_book', book_id = book._id) }}" id="btn-edit">Edit</a>
-    <a href="{{url_for('delete_book', book_id = book._id) }}" id="btn-delete">Delete</a>
+    <a href="{{url_for('edit_book', book_id = book._id) }}" id="btn-edit" aria-label="Go to edit a book">Edit</a>
+    <a href="{{url_for('delete_book', book_id = book._id) }}" id="btn-delete" aria-label="Click for deleting a book">Delete</a>
   </div>
 </div>
 

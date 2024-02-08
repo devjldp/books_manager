@@ -1,4 +1,4 @@
 {% extends "books_template.html" %} {% block content %} {% for book in books %} {{ book.title}}
-<a href="{{url_for('view_book', book_id = book._id) }}">View Book</a>
+<a href="{{url_for('view_book', book_id = book._id) }}" aria-label="Go to view the book information and add a review">View Book</a>
 
 <br />{% endfor %} {% endblock %}

@@ -1,14 +1,10 @@
 {% extends "books_template.html" %} {% block content %}
 <h1 class="text-center">Bookish Blaze</h1>
 <div id="img-container">
-  <img
-    src="{{ url_for('static', filename='images/main2.jpg') }}"
-    alt="book with a coffe"
-    id="main-image"
-  />
+  <img src="{{ url_for('static', filename='images/main2.jpg') }}" alt="book with a coffe" id="main-image" />
   <div id="btns-index">
-    <a href="{{url_for('register')}}" class="btn-index">Register</a>
-    <a href="{{url_for('login')}}" class="btn-index">Sign In</a>
+    <a href="{{url_for('register')}}" class="btn-index" aria-label="Register a new user">Register</a>
+    <a href="{{url_for('login')}}" class="btn-index" aria-label="Sig in">Sign In</a>
   </div>
 </div>
 {% endblock %}

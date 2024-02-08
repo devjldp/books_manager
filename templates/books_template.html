@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Author: Jose Luis Diaz Pulgar" />
+    <meta name="description" content="Book club we read a book weekly and review it" />
+    <meta name="keywords" content="book, review, community, entertainment, reading" />
     <script src="https://kit.fontawesome.com/7eb6fd173c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
     <title>Bookish Blaze</title>
@@ -12,27 +15,29 @@
     <header id="main-header">
       <!-- screen nav bar  -->
       <nav>
-        <a a href="{{ url_for('index') }}" id="logo" class="text-riot">Bookish Blaze</a>
+        <a a href="{{ url_for('index') }}" id="logo" class="text-riot" aria-label="Go to landing page">Bookish Blaze</a>
         <ul id="nav-bar">
           <li><a href="{{ url_for('index') }}">Home</a></li>
           <!-- links for users -->
           {% if session.user and session.user!='admin' %}
           <li>
-            <a href="{{ url_for('profile', username = session['user']) }}">Profile</a>
+            <a href="{{ url_for('profile', username = session['user']) }}" aria-label="Go to user's profile page">Profile</a>
           </li>
-          <li><a href="{{ url_for('get_user_books', username = username) }}">New Review</a></li>
-          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          <li><a href="{{ url_for('get_user_books', username = username) }}" aria-label="Add a new review">New Review</a></li>
+          <li><a href="{{ url_for('logout') }}" aria-label="Log out and go back to landing page">Log Out</a></li>
           <!-- links for admin  -->
           {% elif session.user == 'admin' %}
           <li>
-            <a href="{{ url_for('admin', username = session['user']) }}">Management</a>
+            <a href="{{ url_for('admin', username = session['user']) }}" aria-label="Go to management page to add or edit a book"
+              >Management</a
+            >
           </li>
-          <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-          <li><a href="{{ url_for('get_books')}}">Edit Book</a></li>
-          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          <li><a href="{{ url_for('add_book') }}" aria-label="Go to add a book page to add a new book">Add Book</a></li>
+          <li><a href="{{ url_for('get_books')}}" aria-label="Go to book list book for editing o deleting">Book List</a></li>
+          <li><a href="{{ url_for('logout') }}" aria-label="Log out and go back to landing page">Log Out</a></li>
           {% else %}
-          <li><a href="{{ url_for('login') }}">Sign In</a></li>
-          <li><a href="{{ url_for('register') }}">Register</a></li>
+          <li><a href="{{ url_for('login') }}" aria-label="Sig in">Sign In</a></li>
+          <li><a href="{{ url_for('register') }}" aria-label="Register a new user">Register</a></li>
           {% endif %}
         </ul>
       </nav>
