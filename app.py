@@ -187,7 +187,7 @@ def get_books():
     return render_template("books.html", books=books, pagination=pagination)
 
 
-# Define the route "/edit_task/<task_id>" to edit an existing task
+# Define the route "/edit_book/<book_id>" to edit an existing book
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     if request.method == "POST":
@@ -202,7 +202,7 @@ def edit_book(book_id):
             "language": request.form.get("language").lower(),
             "description": request.form.get("description")
         }
-        # Update the task in the database using its ID
+        # Update the book in the database using its ID
         mongo.db.books.update_one({"_id": ObjectId(book_id)}, {"$set": updatedBook})
         
         # Display a success message using flash
@@ -218,19 +218,29 @@ def edit_book(book_id):
 # Define the route to delete a task with its ID
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
-    # Delete the task from the database using its ID
+    # Delete the book from the database using its ID
     mongo.db.books.delete_one({"_id": ObjectId(book_id)})
     # Display a success message using flash
     flash("Book Successfully Deleted")
-    # Redirect to the page that shows all tasks
+    # Redirect to the page that shows all books
     return redirect(url_for("get_books"))
 
 # routes for users
 
 @app.route('/books/<username>')
 def get_user_books(username):
-    books = mongo.db.books.find()
-    return render_template("books_user.html", books=books)
+    search = False    
+    # Number of books per page
+    books_per_page = 10
+    # Get the current page number from the URL query
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    # Calculate the start index for pagination
+    start_index = (page - 1) * books_per_page
+    # MongoDB query with limit and skip for pagination
+    books = list(mongo.db.books.find().skip(start_index).limit(books_per_page))
+    total = mongo.db.books.count_documents({})  # Total number of books in the collection
+    pagination = Pagination(page=page, total=total, search=search, record_name='books', per_page=books_per_page)
+    return render_template("books_user.html", books=books, pagination = pagination)
 
 
 @app.route('/view_book/<book_id>',  methods=["GET", "POST"])

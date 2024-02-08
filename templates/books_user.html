@@ -1,4 +1,7 @@
-{% extends "books_template.html" %} {% block content %} {% for book in books %} {{ book.title}}
-<a href="{{url_for('view_book', book_id = book._id) }}" aria-label="Go to view the book information and add a review">View Book</a>
+{% extends "books_template.html" %} {% block content %} {{ pagination.info }} {{ pagination.links }} {% for book in books %}
+<div class="text-center">
+  <p>{{ book.title}}</p>
+  <a href="{{url_for('view_book', book_id = book._id) }}" aria-label="Go to view the book information and add a review">View Book</a>
+</div>
 
-<br />{% endfor %} {% endblock %}
+<br />{% endfor %} {{ pagination.links }} {% endblock %}
