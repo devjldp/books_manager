@@ -1,5 +1,5 @@
 {% extends "books_template.html" %} {% block content %}
-<h1 class="text-center">Add a new Book</h1>
+<h1 class="text-center">Edit Book</h1>
 <form action="{{url_for('edit_book', book_id = book._id)}}" method="POST">
   <table class="forms">
     <tbody>
