@@ -163,7 +163,7 @@ nav{
   justify-content: space-around;
   margin-bottom: 2vh;
 }
-.btn-index{
+.btn-index, .userBtn{
   background-color: #856a50;
   color: #fafafa;
   text-decoration: none;
@@ -172,7 +172,7 @@ nav{
   border-radius: 20px;
 }
 
-.btn-index:hover{
+.btn-index:hover, .userBtn:hover{
   background-color: #fafafa;
   color: #856a50
 }
