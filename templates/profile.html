@@ -1,6 +1,14 @@
 {% extends "books_template.html" %} {% block content %}
-<div>
+<div class="text-center">
   <p>Reader: {{username}}</p>
+  <h1>Book of the Week</h1>
+  <div class="text-center" id="book-data">
+    <p id="book-title"><span class="info-label">Title:</span> {{book.title}}</p>
+    <p class="book-info"><span class="info-label">Author:</span> {{book.author}}</p>
+    <p class="book-info"><span class="info-label">Year:</span> {{book.year_published}}</p>
+    <p class="book-info"><span class="info-label">Language:</span> {{book.language}}</p>
+    <p class="book-info"><span class="info-label">Description:</span> {{book.description}}</p>
+  </div>
 </div>
 
 {% endblock %}

@@ -106,10 +106,15 @@ def profile(username):
     # Get the username from the current session
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    
+    
+    book = mongo.db.books.find_one(sort=[('_id', -1)])
+    
+
     # Check if there is an active user session
     if session["user"]:
         # Render the "profile.html" template and pass the username as an argument
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, book=book)
     # If there is no active session, redirect to the login
     return redirect(url_for("login"))
 
