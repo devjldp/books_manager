@@ -23,7 +23,7 @@
           <li>
             <a href="{{ url_for('profile', username = session['user']) }}" aria-label="Go to user's profile page">Profile</a>
           </li>
-          <li><a href="{{ url_for('get_user_books', username = username) }}" aria-label="Add a new review">New Review</a></li>
+          <li><a href="{{ url_for('get_user_books', username = username) }}" aria-label="Add a new review">Book List</a></li>
           <li><a href="{{ url_for('logout') }}" aria-label="Log out and go back to landing page">Log Out</a></li>
           <!-- links for admin  -->
           {% elif session.user == 'admin' %}
