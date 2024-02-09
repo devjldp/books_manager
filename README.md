@@ -180,7 +180,8 @@ As of the project delivery, no bugs have been observed.
 main image: it was downloaded from [here](https://www.vecteezy.com/photo/28112855-a-cup-of-coffee-with-book-and-pen-on-the-wooden-table-ai-generated)
 
 ### code
-Code to validate a password using javascript: Follow this article [here](https://www.w3resource.com/javascript/form/password-validation.php)
+Code to validate a password using javascript: Follow this article [here](https://www.w3resource.com/javascript/form/password-validation.php)  
+**The rest of the code was implemented for me with the skills gained during the code institute course.**
 
 
 
